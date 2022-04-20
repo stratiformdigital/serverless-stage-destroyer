@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.0.0...v1.0.1) (2022-04-20)
+
+
+### Bug Fixes
+
+* **npm version:** generate lock with current npm version ([667cbc6](https://github.com/mdial89f/serverless-stage-destroyer/commit/667cbc604385d547749f5b35ed02d7049b031709))
+
 # 1.0.0 (2022-04-20)
 
 
