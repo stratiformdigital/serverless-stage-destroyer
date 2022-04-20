@@ -66,8 +66,7 @@ export class ServerlessStageDestroyer {
 
     private confirmDestroyCommand(stage: string) {
       // Another safeguard against destroying protected stages
-      // if (stage == "main" || stage == "staging" || stage == "production") {
-      if (stage == "meow") {
+      if (stage == "master" || stage == "main" || stage == "staging" || stage == "production") {
         throw `
           **********************************************************************
           You've requested a destroy for a protected stage (${stage}).
