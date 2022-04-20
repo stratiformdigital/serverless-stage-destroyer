@@ -21,6 +21,8 @@
   </a>
 </p>
 
+** NOTE:  This package is currently in a storming phase and published as a 1.x version.  Features, fixes, and general repository updates are happening frequently.  A 2.x version will be released when the storming is over.
+
 ## Usage
 
 Install to your project with your packager manager of choice, likely as a dev dependency:
@@ -45,6 +47,10 @@ destroyer.destroy("us-east-1", "foo");
 ## Background
 
 ## Assorted Notes/Considerations
+
+This package is designed to prompt the user to confirm they want to proceed with destroying a given stage, by way of asking for re-input of the stage name.  If the environment variable CI is present and set to true, as is the case for most CI systems, this confirmation is bypassed.
+
+This package is designed to refuse to destroy stages named master, main, staging, or production.  There may be use cases where destroying stages with those names is desired, but this package doesn't want to help with that for now.
 
 ## License
 
