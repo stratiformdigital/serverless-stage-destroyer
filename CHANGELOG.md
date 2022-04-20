@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.0.4...v1.0.5) (2022-04-20)
+
+
+### Bug Fixes
+
+* **protected list:** fix the protected stage list ([0459036](https://github.com/mdial89f/serverless-stage-destroyer/commit/045903631c163d1c1c60696d4d1d0fcec4e64f6a))
+
 ## [1.0.4](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.0.3...v1.0.4) (2022-04-20)
 
 
