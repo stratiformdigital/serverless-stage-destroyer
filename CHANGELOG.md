@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.0.1...v1.0.2) (2022-04-20)
+
+
+### Bug Fixes
+
+* **generate package:** generate package prior to publish ([06b4a58](https://github.com/mdial89f/serverless-stage-destroyer/commit/06b4a58b57177b47777e5fff6352ee05cef515f1))
+
 ## [1.0.1](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.0.0...v1.0.1) (2022-04-20)
 
 
