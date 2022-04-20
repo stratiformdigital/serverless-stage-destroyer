@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.0.3...v1.0.4) (2022-04-20)
+
+
+### Bug Fixes
+
+* **fix deps:** move dev deps to dev deps ([deb13d1](https://github.com/mdial89f/serverless-stage-destroyer/commit/deb13d1e2a3c4c70098c52f9cd8e91bbe4dd2139))
+
 ## [1.0.3](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.0.2...v1.0.3) (2022-04-20)
 
 
