@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.0.5...v1.0.6) (2022-04-20)
+
+
+### Bug Fixes
+
+* **readme:** update readme with notes ([82c24f9](https://github.com/mdial89f/serverless-stage-destroyer/commit/82c24f9572eb9528bfc0166fcec88387914afd27))
+
 ## [1.0.5](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.0.4...v1.0.5) (2022-04-20)
 
 
