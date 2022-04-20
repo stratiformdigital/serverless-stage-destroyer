@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.0.6...v1.1.0) (2022-04-20)
+
+
+### Features
+
+* **remove husky:** remove husky ([bca36e5](https://github.com/mdial89f/serverless-stage-destroyer/commit/bca36e5217d719bb7d5a79e9fbe41efa10ecb00d))
+
 ## [1.0.6](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.0.5...v1.0.6) (2022-04-20)
 
 
