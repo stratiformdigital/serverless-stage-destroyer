@@ -20,3 +20,42 @@
     <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square">
   </a>
 </p>
+
+## Usage
+
+Install to your project with your packager manager of choice, likely as a dev dependency:
+```
+npm install serverless-stage-destroyer --save-dev
+```
+or
+```
+yarn add serverless-stage-destroyer --dev
+```
+
+Using the package to destroy resources associated with the "foo" stage in Amazon's us-east-1 region:
+```
+import { ServerlessStageDestroyer } from "serverless-stage-destroyer"
+
+...
+
+let destroyer = new ServerlessStageDestroyer;
+destroyer.destroy("us-east-1", "foo");
+```
+
+## Background
+
+## Assorted Notes/Considerations
+
+## License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+See [LICENSE](LICENSE) for full details.
+
+## Contributors
+
+| [![Mike Dial][dial_avatar]][dial_homepage]<br/>[Mike Dial][dial_homepage] |
+| ------------------------------------------------------------------------- |
+
+[dial_homepage]: https://github.com/mdial89f
+[dial_avatar]: https://avatars.githubusercontent.com/mdial89f?size=150
