@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.0.2...v1.0.3) (2022-04-20)
+
+
+### Bug Fixes
+
+* **clean up publish:**  fix up npmignore to ignore src and others ([780ccfc](https://github.com/mdial89f/serverless-stage-destroyer/commit/780ccfc0a4fe2ab3b80ad672cab36c9a1848e557))
+
 ## [1.0.2](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.0.1...v1.0.2) (2022-04-20)
 
 
