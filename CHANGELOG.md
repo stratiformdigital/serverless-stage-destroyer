@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.1.0...v1.2.0) (2022-04-23)
+
+
+### Features
+
+* **scope:** publish as scoped package ([9bbe037](https://github.com/mdial89f/serverless-stage-destroyer/commit/9bbe037124c93c697820360c37e72ca7b1df0b72))
+
 # [1.1.0](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.0.6...v1.1.0) (2022-04-20)
 
 
