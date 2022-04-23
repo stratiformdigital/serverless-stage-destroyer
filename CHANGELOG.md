@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.2.0...v1.2.1) (2022-04-23)
+
+
+### Bug Fixes
+
+* **lock:** regen lock ([dd787b1](https://github.com/mdial89f/serverless-stage-destroyer/commit/dd787b1378b798c3d4c83be4cef9742ebea2bb7b))
+
 # [1.2.0](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.1.0...v1.2.0) (2022-04-23)
 
 
