@@ -17,20 +17,37 @@ import {
 } from "@aws-sdk/client-s3";
 import * as readlineSync from "readline-sync";
 
+type Tag = {
+  Key: string;
+  Value: string;
+};
+
 export class ServerlessStageDestroyer {
 
-    public async destroy(region: string, stage: string) {
+    public async destroy(region: string, stage: string, addFilters?: Tag[]) {
+      // First, check if a protected stage name has been passed, and fail if so.
+      this.checkForProtectedStage(stage);
 
-      this.confirmDestroyCommand(stage);
+      // Second, find all stacks that match the stage and any additional tag filters.
+      let stacksToDestroy = await this.getAllStacksForStage(region, stage, addFilters);
 
-      let stacksToDestroy = await this.getAllStacksForStage(region, stage);
-
-      for (let i of stacksToDestroy || []) {
-        await this.destroyStack(region, i.StackName || "");
+      if (stacksToDestroy.length === 0 ) {
+        console.log("No stacks matched... Nothing to delete... Exiting...")
+        return
       }
 
+      // Third, show the stacks identified for destroy, and ask the user to confirm before proceeding.
+      //   This underlying function is bypassed when CI=true
+      this.confirmDestroyCommand(stage, stacksToDestroy.map(a => `${a.StackName}`));
+
+      // Fourth, destroy each stack.
       for (let i of stacksToDestroy || []) {
-        await this.ensureStackIsDeleted(region, i.StackName || "");
+        await this.destroyStack(region, `${i.StackName}`);
+      }
+
+      // Fifth, wait for stacks to be deleted.
+      for (let i of stacksToDestroy || []) {
+        await this.ensureStackIsDeleted(region, `${i.StackName}`);
       }
     }
 
@@ -57,14 +74,24 @@ export class ServerlessStageDestroyer {
       return stacks;
     }
 
-    private async getAllStacksForStage(region: string, stage: string) {
+    private async getAllStacksForStage(region: string, stage: string, addFilters?: Tag[]) {
       let stacks = await this.getAllStacksForRegion(region);
-      return stacks.filter((i) =>
-        i.Tags?.find((j) => j.Key == "STAGE" && j.Value == stage)
-      );
+      const matchTags = [
+        {
+          Key: "STAGE",
+          Value: stage
+        }
+      ]
+      matchTags.push(...(addFilters || []));
+      for (let matchTag of matchTags) {
+        stacks = stacks.filter((i) =>
+          i.Tags?.find((j) => j.Key == matchTag.Key && j.Value == matchTag.Value)
+        );
+      }
+      return stacks;
     }
 
-    private confirmDestroyCommand(stage: string) {
+    private checkForProtectedStage(stage: string) {
       // Another safeguard against destroying protected stages
       if (stage == "master" || stage == "main" || stage == "staging" || stage == "production") {
         throw `
@@ -74,12 +101,20 @@ export class ServerlessStageDestroyer {
           **********************************************************************
         `;
       }
+    }
+
+    private confirmDestroyCommand(stage: string, markedStacks: String[]) {
       if (process.env.CI != "true") {
         var confirmation = readlineSync.question(`
           ********************************* STOP *******************************
           You've requested a destroy for stage: ${stage}.
           Continuing will irreversibly delete all data and infrastructure
           associated with ${stage}.
+          The following Cloudformation stacks and their underlying resources
+          willbe permanently deleted:
+
+          ${markedStacks}
+
           Do you really want to destroy it?
           Re-enter the stage name to continue:
           **********************************************************************
