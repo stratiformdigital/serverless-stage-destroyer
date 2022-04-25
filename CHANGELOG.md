@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.2.1...v1.3.0) (2022-04-25)
+
+
+### Features
+
+* **filters:**  Add ability to filter based on 'n' number of tags ([#2](https://github.com/mdial89f/serverless-stage-destroyer/issues/2)) ([3a83647](https://github.com/mdial89f/serverless-stage-destroyer/commit/3a836476590eaac156bdb76db2e97ae044ab96e2))
+
 ## [1.2.1](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.2.0...v1.2.1) (2022-04-23)
 
 
