@@ -93,7 +93,7 @@ export class ServerlessStageDestroyer {
 
     private checkForProtectedStage(stage: string) {
       // Another safeguard against destroying protected stages
-      if (stage == "master" || stage == "main" || stage == "staging" || stage == "production") {
+      if (stage.toLowerCase().includes("prod")) {
         throw `
           **********************************************************************
           You've requested a destroy for a protected stage (${stage}).
