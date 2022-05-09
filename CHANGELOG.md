@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.3.0...v1.4.0) (2022-05-09)
+
+
+### Features
+
+* **protected change:**  Only consider a prod stage as protected ([#6](https://github.com/mdial89f/serverless-stage-destroyer/issues/6)) ([81ebe92](https://github.com/mdial89f/serverless-stage-destroyer/commit/81ebe92a171ed138298e5956ac9987f44d3e94f6))
+
 # [1.3.0](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.2.1...v1.3.0) (2022-04-25)
 
 
