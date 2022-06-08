@@ -1,6 +1,6 @@
 {
   "name": "@theclouddeck/serverless-stage-destroyer",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Deletes all Cloudformation Stacks associated to a specified Serverless stage.",
   "main": "./dist/index.js",
   "typings": "./dist/index.js",

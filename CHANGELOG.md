@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/theclouddeck/serverless-stage-destroyer/compare/v1.4.0...v1.5.0) (2022-06-08)
+
+
+### Features
+
+* **move org:** move to theclouddeck ([40cd1f6](https://github.com/theclouddeck/serverless-stage-destroyer/commit/40cd1f60c2c699bb546198315f7f7f0fdf47de91))
+
 # [1.4.0](https://github.com/mdial89f/serverless-stage-destroyer/compare/v1.3.0...v1.4.0) (2022-05-09)
 
 
