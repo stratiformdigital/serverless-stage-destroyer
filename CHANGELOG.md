@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/stratiformdigital/serverless-stage-destroyer/compare/v1.5.0...v1.6.0) (2022-06-23)
+
+
+### Features
+
+* **migration:** migrate orgs ([00f0730](https://github.com/stratiformdigital/serverless-stage-destroyer/commit/00f073021a62897d386ed813017c408f28650881))
+
 # [1.5.0](https://github.com/theclouddeck/serverless-stage-destroyer/compare/v1.4.0...v1.5.0) (2022-06-08)
 
 
