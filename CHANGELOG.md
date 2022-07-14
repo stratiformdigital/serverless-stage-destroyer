@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/stratiformdigital/serverless-stage-destroyer/compare/v1.6.0...v1.7.0) (2022-07-14)
+
+
+### Features
+
+* **publish:**  Publish ([9acae99](https://github.com/stratiformdigital/serverless-stage-destroyer/commit/9acae99568fb50ededc618b89664e8181bea5e88))
+
 # [1.6.0](https://github.com/stratiformdigital/serverless-stage-destroyer/compare/v1.5.0...v1.6.0) (2022-06-23)
 
 
