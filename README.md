@@ -8,7 +8,7 @@
     <img alt="npm latest version" src="https://img.shields.io/npm/v/@stratiformdigital/serverless-stage-destroyer/latest.svg">
   </a>
   <a href="https://codeclimate.com/github/stratiformdigital/serverless-stage-destroyer/maintainability">
-    <img alt="Maintainability" src="https://api.codeclimate.com/v1/badges/20f59ef91bd30565c424/maintainability">
+    <img alt="Maintainability" src="https://api.codeclimate.com/v1/badges/a54385e81ba0c9fe7c40/maintainability">
   </a>
   <a href="https://github.com/semantic-release/semantic-release">
     <img alt="semantic-release: angular" src="https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release">
