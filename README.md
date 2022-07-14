@@ -4,8 +4,8 @@
   <a href="https://github.com/stratiformdigital/serverless-stage-destroyer/releases/latest">
     <img alt="latest release" src="https://img.shields.io/github/release/stratiformdigital/serverless-stage-destroyer.svg">
   </a>
-  <a href="https://www.npmjs.com/package/serverless-stage-destroyer">
-    <img alt="npm latest version" src="https://img.shields.io/npm/v/serverless-stage-destroyer/latest.svg">
+  <a href="https://www.npmjs.com/package/@stratiformdigital/serverless-stage-destroyer">
+    <img alt="npm latest version" src="https://img.shields.io/npm/v/@stratiformdigital/serverless-stage-destroyer/latest.svg">
   </a>
   <a href="https://codeclimate.com/github/stratiformdigital/serverless-stage-destroyer/maintainability">
     <img alt="Maintainability" src="https://api.codeclimate.com/v1/badges/20f59ef91bd30565c424/maintainability">
@@ -20,8 +20,6 @@
     <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square">
   </a>
 </p>
-
-** NOTE:  This package is currently in a storming phase and published as a 1.x version.  Features, fixes, and general repository updates are happening frequently.  A 2.x version will be released when the storming is over.
 
 ## Usage
 
@@ -57,11 +55,3 @@ This package is designed to refuse to destroy stages named master, main, staging
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 See [LICENSE](LICENSE) for full details.
-
-## Contributors
-
-| [![Mike Dial][dial_avatar]][dial_homepage]<br/>[Mike Dial][dial_homepage] |
-| ------------------------------------------------------------------------- |
-
-[dial_homepage]: https://github.com/mdial89f
-[dial_avatar]: https://avatars.githubusercontent.com/mdial89f?size=150
