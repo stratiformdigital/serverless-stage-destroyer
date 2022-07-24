@@ -1,17 +1,14 @@
 import { ServerlessStageDestroyer } from "./../dist/index.js";
 import LabeledProcessRunner from "./runner.mjs";
-console.log("hello");
 
 const runner = new LabeledProcessRunner();
 
 async function deploy() {
-    console.log("lets deploy")
     await runner.run_command_and_output(
         `deploy services`,
         ["sls", "deploy", "--stage", process.env.STAGE_NAME],
         'tests/services'
     );
-    console.log('lol');
 }
 
 async function destroyAll() {
