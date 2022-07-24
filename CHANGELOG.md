@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/stratiformdigital/serverless-stage-destroyer/compare/v1.7.0...v2.0.0) (2022-07-24)
+
+
+### Features
+
+* **refactor:**  Refactor to accept named options and add wait option ([#42](https://github.com/stratiformdigital/serverless-stage-destroyer/issues/42)) ([24ea815](https://github.com/stratiformdigital/serverless-stage-destroyer/commit/24ea8158a7b5b25951714eaf29d44cd6e6efae97))
+
+
+### BREAKING CHANGES
+
+* **refactor:** change to expected function inputs.
+
 # [1.7.0](https://github.com/stratiformdigital/serverless-stage-destroyer/compare/v1.6.0...v1.7.0) (2022-07-14)
 
 
