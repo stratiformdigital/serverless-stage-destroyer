@@ -1,0 +1,12 @@
+
+services:
+  alpha:
+    path: alpha
+    params:
+      PROJECT: serverless-stage-destroyer
+      region: us-east-1
+  bravo:
+    path: bravo
+    params:
+      PROJECT: serverless-stage-destroyer
+      region: us-east-2
