@@ -1,0 +1,51 @@
+
+services:
+  #######################################
+  # Service a,b,c,d deployed to us-east-1
+  #######################################
+  one-alpha:
+    path: services/one-alpha
+    params:
+      PROJECT: serverless-stage-destroyer
+      region: us-east-1
+  one-bravo:
+    path: services/one-bravo
+    params:
+      PROJECT: serverless-stage-destroyer
+      region: us-east-1
+  one-charlie:
+    path: services/one-charlie
+    params:
+      PROJECT: serverless-stage-destroyer
+      region: us-east-1
+  one-delta:
+    path: services/one-delta
+    params:
+      PROJECT: serverless-stage-destroyer
+      region: us-east-1
+  #######################################
+
+  #######################################
+  # Service a,b,c,d deployed to us-east-2
+  #######################################
+  two-alpha:
+    path: services/two-alpha
+    params:
+      PROJECT: serverless-stage-destroyer
+      region: us-east-2
+  two-bravo:
+    path: services/two-bravo
+    params:
+      PROJECT: serverless-stage-destroyer
+      region: us-east-2
+  two-charlie:
+    path: services/two-charlie
+    params:
+      PROJECT: serverless-stage-destroyer
+      region: us-east-2
+  two-delta:
+    path: services/two-delta
+    params:
+      PROJECT: serverless-stage-destroyer
+      region: us-east-2
+  #######################################

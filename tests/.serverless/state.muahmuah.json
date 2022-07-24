@@ -1,0 +1,71 @@
+{
+  "service": {
+    "id": "y3a1moh"
+  },
+  "components": {
+    "one-delta": {
+      "state": {
+        "detectedFrameworkVersion": "3.21.0"
+      },
+      "outputs": {
+        "ServerlessDeploymentBucketName": "delta-muahmuah-serverlessdeploymentbucket-11ld9d2dcg5el"
+      }
+    },
+    "two-delta": {
+      "state": {
+        "detectedFrameworkVersion": "3.21.0"
+      },
+      "outputs": {
+        "ServerlessDeploymentBucketName": "delta-muahmuah-serverlessdeploymentbucket-1lofxvnrxwciu"
+      }
+    },
+    "two-bravo": {
+      "state": {
+        "detectedFrameworkVersion": "3.21.0"
+      },
+      "outputs": {
+        "ServerlessDeploymentBucketName": "bravo-muahmuah-serverlessdeploymentbucket-xyy99uruptwv"
+      }
+    },
+    "one-bravo": {
+      "state": {
+        "detectedFrameworkVersion": "3.21.0"
+      },
+      "outputs": {
+        "ServerlessDeploymentBucketName": "bravo-muahmuah-serverlessdeploymentbucket-m9rx1gv1tgcl"
+      }
+    },
+    "one-charlie": {
+      "state": {
+        "detectedFrameworkVersion": "3.21.0"
+      },
+      "outputs": {
+        "ServerlessDeploymentBucketName": "charlie-muahmuah-serverlessdeploymentbucket-m2nxeu7id2wx"
+      }
+    },
+    "two-alpha": {
+      "state": {
+        "detectedFrameworkVersion": "3.21.0"
+      },
+      "outputs": {
+        "ServerlessDeploymentBucketName": "alpha-muahmuah-serverlessdeploymentbucket-zwjgbqebydyd"
+      }
+    },
+    "one-alpha": {
+      "state": {
+        "detectedFrameworkVersion": "3.21.0"
+      },
+      "outputs": {
+        "ServerlessDeploymentBucketName": "alpha-muahmuah-serverlessdeploymentbucket-12q4ewjvsr4jx"
+      }
+    },
+    "two-charlie": {
+      "state": {
+        "detectedFrameworkVersion": "3.21.0"
+      },
+      "outputs": {
+        "ServerlessDeploymentBucketName": "charlie-muahmuah-serverlessdeploymentbucket-hwk7a92h8k4l"
+      }
+    }
+  }
+}

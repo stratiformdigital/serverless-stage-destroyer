@@ -3,11 +3,11 @@ import LabeledProcessRunner from "./runner.mjs";
 
 const runner = new LabeledProcessRunner();
 
-async function deploy() {
+async function deployAll() {
     await runner.run_command_and_output(
         `deploy services`,
         ["sls", "deploy", "--stage", process.env.STAGE_NAME],
-        'tests/services'
+        'tests'
     );
 }
 
@@ -28,6 +28,6 @@ async function destroyAll() {
       }
 }
 
-await deploy()
+await deployAll()
 await destroyAll()
 
