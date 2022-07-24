@@ -2,6 +2,9 @@ name: Test
 
 on: [pull_request]
 
+concurrency:
+  group: ${{ github.event.pull_request.head.ref }}
+
 jobs:
   test:
     runs-on: ubuntu-latest
