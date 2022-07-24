@@ -27,13 +27,17 @@ async function getAllStacksForStage(region, stage) {
     .filter((i) => i.Tags?.find((j) => j.Key == "STAGE" && j.Value == stage))
     .map((z) => z.StackName);
 }
+
+async function deployAll() {
+  console.log("Deploying all services for testing...");
+  await runner.run_command_and_output(
+    `deploy services`,
+    ["sls", "deploy", "--stage", process.env.STAGE_NAME],
+    "tests"
+  );
+}
 // ------------------------------------------------
-console.log("Deploying all services for testing...");
-await runner.run_command_and_output(
-  `deploy services`,
-  ["sls", "deploy", "--stage", process.env.STAGE_NAME],
-  "tests"
-);
+await deployAll();
 // ------------------------------------------------
 
 // ------------------------------------------------
@@ -147,3 +151,28 @@ if (
   throw "ERROR:  Destruction of stage check failed.";
 }
 // ------------------------------------------------
+
+// ------------------------------------------------
+await deployAll();
+// ------------------------------------------------
+
+// ------------------------------------------------
+console.log("\n\nChecking wait flag...");
+before = await getAllStacksForStage(region, process.env.STAGE_NAME);
+await destroyer.destroy(region, process.env.STAGE_NAME, {
+  verify: false,
+  wait: false,
+});
+after = await getAllStacksForStage(region, process.env.STAGE_NAME);
+if (after.length === 0) {
+  throw "ERROR:  wait flag failed to work as intended...";
+}
+// ------------------------------------------------
+
+console.log("Checks passed.  Cleaning up before exiting...");
+while (
+  (await getAllStacksForStage(region, process.env.STAGE_NAME)).length !== 0
+) {
+  console.log("...");
+  await new Promise((r) => setTimeout(r, 10000));
+}

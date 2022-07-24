@@ -26,13 +26,15 @@ export class ServerlessStageDestroyer {
   public async destroy(
     region: string,
     stage: string,
-    props: {
+    options: {
       filters: Tag[];
       verify: boolean;
+      wait: boolean;
     }
   ) {
-    const filters = props.filters || [];
-    const verify = props.verify !== false;
+    const filters = options.filters || [];
+    const verify = options.verify !== false;
+    const wait = options.wait !== false;
     // First, check if a protected stage name has been passed, and fail if so.
     this.checkForProtectedStage(stage);
 
@@ -63,8 +65,10 @@ export class ServerlessStageDestroyer {
     }
 
     // Fifth, wait for stacks to be deleted.
-    for (let i of stacksToDestroy || []) {
-      await this.ensureStackIsDeleted(region, `${i.StackName}`);
+    if (wait) {
+      for (let i of stacksToDestroy || []) {
+        await this.ensureStackIsDeleted(region, `${i.StackName}`);
+      }
     }
   }
 
