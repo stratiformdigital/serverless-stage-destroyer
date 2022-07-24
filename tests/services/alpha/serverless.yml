@@ -1,7 +1,6 @@
-
 service: alpha
 
-frameworkVersion: '3'
+frameworkVersion: "3"
 
 provider:
   name: aws

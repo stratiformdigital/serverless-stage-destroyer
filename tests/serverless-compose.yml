@@ -1,4 +1,3 @@
-
 services:
   alpha:
     path: services/alpha
