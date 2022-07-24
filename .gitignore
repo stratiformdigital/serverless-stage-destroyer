@@ -4,3 +4,4 @@ coverage
 model.nlp
 .DS_Store
 dist
+.serverless

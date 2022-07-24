@@ -1,0 +1,98 @@
+
+Deploying to stage lol
+alpha › waiting
+bravo › waiting
+charlie › waiting
+delta › waiting
+echo › waiting
+foxtrot › waiting
+alpha › deploying
+bravo › deploying
+charlie › deploying
+delta › deploying
+echo › deploying
+foxtrot › deploying
+alpha › Running "serverless deploy --stage lol --param PROJECT=serverless-stage-destroyer"
+bravo › Running "serverless deploy --stage lol --param PROJECT=serverless-stage-destroyer"
+charlie › Running "serverless deploy --stage lol --param PROJECT=serverless-stage-destroyer"
+delta › Running "serverless deploy --stage lol --param PROJECT=serverless-stage-destroyer"
+echo › Running "serverless deploy --stage lol --param PROJECT=other-project"
+foxtrot › Running "serverless deploy --stage lol --param PROJECT=other-project"
+alpha › Running "serverless" from node_modules
+bravo › Running "serverless" from node_modules
+charlie › Running "serverless" from node_modules
+delta › Running "serverless" from node_modules
+echo › Running "serverless" from node_modules
+foxtrot › Running "serverless" from node_modules
+bravo › Deploying bravo to stage lol (us-east-1)
+alpha › Deploying alpha to stage lol (us-east-1)
+charlie › Deploying charlie to stage lol (us-east-1)
+foxtrot › Deploying foxtrot to stage lol (us-east-1)
+delta › Deploying delta to stage lol (us-east-1)
+echo › Deploying echo to stage lol (us-east-1)
+echo › Change set did not include any changes to be deployed. (3s)
+foxtrot › Change set did not include any changes to be deployed. (3s)
+foxtrot › Running "serverless info --verbose --stage lol --param PROJECT=other-project"
+echo › Running "serverless info --verbose --stage lol --param PROJECT=other-project"
+foxtrot › Running "serverless" from node_modules
+echo › Running "serverless" from node_modules
+foxtrot › service: foxtrot
+foxtrot › stage: lol
+foxtrot › region: us-east-1
+foxtrot › stack: foxtrot-lol
+foxtrot › 
+foxtrot › Stack Outputs:
+foxtrot ›   ServerlessDeploymentBucketName: foxtrot-lol-serverlessdeploymentbucket-1sipd91n5ru9b
+echo › service: echo
+echo › stage: lol
+echo › region: us-east-1
+echo › stack: echo-lol
+echo › 
+echo › Stack Outputs:
+echo ›   ServerlessDeploymentBucketName: echo-lol-serverlessdeploymentbucket-vg9eklww8xnh
+foxtrot › deployed
+echo › deployed
+charlie › ✔ Service deployed to stack charlie-lol (60s)
+delta › ✔ Service deployed to stack delta-lol (60s)
+alpha › ✔ Service deployed to stack alpha-lol (60s)
+charlie › Running "serverless info --verbose --stage lol --param PROJECT=serverless-stage-destroyer"
+delta › Running "serverless info --verbose --stage lol --param PROJECT=serverless-stage-destroyer"
+charlie › Running "serverless" from node_modules
+delta › Running "serverless" from node_modules
+alpha › Running "serverless info --verbose --stage lol --param PROJECT=serverless-stage-destroyer"
+alpha › Running "serverless" from node_modules
+bravo › ✔ Service deployed to stack bravo-lol (61s)
+bravo › Running "serverless info --verbose --stage lol --param PROJECT=serverless-stage-destroyer"
+bravo › Running "serverless" from node_modules
+charlie › service: charlie
+charlie › stage: lol
+charlie › region: us-east-1
+charlie › stack: charlie-lol
+charlie › 
+charlie › Stack Outputs:
+charlie ›   ServerlessDeploymentBucketName: charlie-lol-serverlessdeploymentbucket-1lmx5e0eo33jz
+charlie › deployed
+alpha › service: alpha
+alpha › stage: lol
+alpha › region: us-east-1
+alpha › stack: alpha-lol
+alpha › 
+alpha › Stack Outputs:
+alpha ›   ServerlessDeploymentBucketName: alpha-lol-serverlessdeploymentbucket-ayk9c0beb942
+delta › service: delta
+delta › stage: lol
+delta › region: us-east-1
+delta › stack: delta-lol
+delta › 
+delta › Stack Outputs:
+delta ›   ServerlessDeploymentBucketName: delta-lol-serverlessdeploymentbucket-jpobyjg0029q
+alpha › deployed
+delta › deployed
+bravo › service: bravo
+bravo › stage: lol
+bravo › region: us-east-1
+bravo › stack: bravo-lol
+bravo › 
+bravo › Stack Outputs:
+bravo ›   ServerlessDeploymentBucketName: bravo-lol-serverlessdeploymentbucket-aoew0k5nurdx
+bravo › deployed

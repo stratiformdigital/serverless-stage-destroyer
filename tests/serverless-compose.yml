@@ -1,0 +1,25 @@
+services:
+  alpha:
+    path: services/alpha
+    params:
+      PROJECT: serverless-stage-destroyer
+  bravo:
+    path: services/bravo
+    params:
+      PROJECT: serverless-stage-destroyer
+  charlie:
+    path: services/charlie
+    params:
+      PROJECT: serverless-stage-destroyer
+  delta:
+    path: services/delta
+    params:
+      PROJECT: serverless-stage-destroyer
+  echo:
+    path: services/echo
+    params:
+      PROJECT: other-project
+  foxtrot:
+    path: services/foxtrot
+    params:
+      PROJECT: other-project

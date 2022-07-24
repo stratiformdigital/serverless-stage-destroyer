@@ -24,15 +24,19 @@
 ## Usage
 
 Install to your project with your packager manager of choice, likely as a dev dependency:
+
 ```
 npm install serverless-stage-destroyer --save-dev
 ```
+
 or
+
 ```
 yarn add serverless-stage-destroyer --dev
 ```
 
 Using the package to destroy resources associated with the "foo" stage in Amazon's us-east-1 region:
+
 ```
 import { ServerlessStageDestroyer } from "serverless-stage-destroyer"
 
@@ -46,9 +50,9 @@ destroyer.destroy("us-east-1", "foo");
 
 ## Assorted Notes/Considerations
 
-This package is designed to prompt the user to confirm they want to proceed with destroying a given stage, by way of asking for re-input of the stage name.  If the environment variable CI is present and set to true, as is the case for most CI systems, this confirmation is bypassed.
+This package is designed to prompt the user to confirm they want to proceed with destroying a given stage, by way of asking for re-input of the stage name. If the environment variable CI is present and set to true, as is the case for most CI systems, this confirmation is bypassed.
 
-This package is designed to refuse to destroy stages named master, main, staging, or production.  There may be use cases where destroying stages with those names is desired, but this package doesn't want to help with that for now.
+This package is designed to refuse to destroy stages named master, main, staging, or production. There may be use cases where destroying stages with those names is desired, but this package doesn't want to help with that for now.
 
 ## License
 
