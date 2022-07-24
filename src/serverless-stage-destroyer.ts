@@ -23,7 +23,18 @@ type Tag = {
 };
 
 export class ServerlessStageDestroyer {
-  public async destroy(region: string, stage: string, addFilters?: Tag[]) {
+  public async destroy(
+    region: string,
+    stage: string,
+    options: {
+      filters: Tag[];
+      verify: boolean;
+      wait: boolean;
+    }
+  ) {
+    const filters = options.filters || [];
+    const verify = options.verify !== false;
+    const wait = options.wait !== false;
     // First, check if a protected stage name has been passed, and fail if so.
     this.checkForProtectedStage(stage);
 
@@ -31,7 +42,7 @@ export class ServerlessStageDestroyer {
     let stacksToDestroy = await this.getAllStacksForStage(
       region,
       stage,
-      addFilters
+      filters
     );
 
     if (stacksToDestroy.length === 0) {
@@ -41,10 +52,12 @@ export class ServerlessStageDestroyer {
 
     // Third, show the stacks identified for destroy, and ask the user to confirm before proceeding.
     //   This underlying function is bypassed when CI=true
-    this.confirmDestroyCommand(
-      stage,
-      stacksToDestroy.map((a) => `${a.StackName}`)
-    );
+    if (verify) {
+      this.confirmDestroyCommand(
+        stage,
+        stacksToDestroy.map((a) => `${a.StackName}`)
+      );
+    }
 
     // Fourth, destroy each stack.
     for (let i of stacksToDestroy || []) {
@@ -52,8 +65,10 @@ export class ServerlessStageDestroyer {
     }
 
     // Fifth, wait for stacks to be deleted.
-    for (let i of stacksToDestroy || []) {
-      await this.ensureStackIsDeleted(region, `${i.StackName}`);
+    if (wait) {
+      for (let i of stacksToDestroy || []) {
+        await this.ensureStackIsDeleted(region, `${i.StackName}`);
+      }
     }
   }
 
@@ -114,28 +129,26 @@ export class ServerlessStageDestroyer {
   }
 
   private confirmDestroyCommand(stage: string, markedStacks: String[]) {
-    if (process.env.CI != "true") {
-      var confirmation = readlineSync.question(`
-          ********************************* STOP *******************************
-          You've requested a destroy for stage: ${stage}.
-          Continuing will irreversibly delete all data and infrastructure
-          associated with ${stage}.
-          The following Cloudformation stacks and their underlying resources
-          willbe permanently deleted:
+    var confirmation = readlineSync.question(`
+        ********************************* STOP *******************************
+        You've requested a destroy for stage: ${stage}.
+        Continuing will irreversibly delete all data and infrastructure
+        associated with ${stage}.
+        The following Cloudformation stacks and their underlying resources
+        willbe permanently deleted:
 
-          ${markedStacks}
+        ${markedStacks}
 
-          Do you really want to destroy it?
-          Re-enter the stage name to continue:
+        Do you really want to destroy it?
+        Re-enter the stage name to continue:
+        **********************************************************************
+      `);
+    if (confirmation != stage) {
+      throw `
           **********************************************************************
-        `);
-      if (confirmation != stage) {
-        throw `
-            **********************************************************************
-            The destroy operation has been aborted.
-            **********************************************************************
-          `;
-      }
+          The destroy operation has been aborted.
+          **********************************************************************
+        `;
     }
   }
 
