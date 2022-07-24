@@ -1,7 +1,11 @@
 name: Test
 
 on:
-  - pull_request
+  push:
+    branches:
+      - "*"
+      - "!main"
+      - "!skipci*"
 
 concurrency:
   group: ${{ github.event.pull_request.head.ref }}
