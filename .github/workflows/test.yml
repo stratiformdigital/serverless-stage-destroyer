@@ -17,4 +17,4 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
-      - run: echo $STAGE_NAME
+      - run: npm run test

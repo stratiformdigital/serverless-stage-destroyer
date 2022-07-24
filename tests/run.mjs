@@ -8,7 +8,7 @@ async function deploy() {
     console.log("lets deploy")
     await runner.run_command_and_output(
         `deploy services`,
-        ["sls", "deploy"],
+        ["sls", "deploy", "--stage", process.env.STAGE_NAME],
         'tests/services'
     );
     console.log('lol');
@@ -27,7 +27,7 @@ async function destroyAll() {
         "us-east-2"
       ];
       for (let region of regions) {
-        await destroyer.destroy(region, "dev", filters);
+        await destroyer.destroy(region, process.env.STAGE_NAME, filters);
       }
 }
 
