@@ -1,6 +1,4 @@
 import { spawn } from "child_process";
-// LabeledProcessRunner is a command runner that interleaves the output from different
-// calls to run_command_and_output each with their own prefix
 export default class LabeledProcessRunner {
     constructor() {
         this.prefixColors = {};
@@ -19,8 +17,6 @@ export default class LabeledProcessRunner {
             "14",
         ];
     }
-    // formattedPrefix pads the prefix for a given process so that all prefixes are
-    // right aligned in your terminal.
     formattedPrefix(prefix) {
         let color;
         if (prefix in this.prefixColors) {
@@ -45,13 +41,6 @@ export default class LabeledProcessRunner {
         }
         return `\x1b[38;5;${color}m ${prefix.padStart(maxLength)}|\x1b[0m`;
     }
-    // run_command_and_output runs the given shell command and interleaves its output with all
-    // other commands run via this method.
-    //
-    // prefix: the prefix to display at the start of every line printed by this command
-    // cmd: an array containing the command and all arguments to the command to be run
-    // cwd: optional directory to change into before running the command
-    // returns a promise that errors if the command exits error and resolves on success
     async run_command_and_output(prefix, cmd, cwd) {
         const proc_opts = {};
         if (cwd) {
@@ -84,9 +73,6 @@ export default class LabeledProcessRunner {
                 const paddedPrefix = this.formattedPrefix(prefix);
                 process.stdout.write(`${paddedPrefix} Exit: ${code}\n`);
                 if (code != 0) {
-                    // This is not my area.
-                    // Deploy failures don't get handled and show up here with non zero exit codes
-                    // Here we throw an error.  Not sure what's best.
                     throw `Exit ${code}`;
                 }
                 resolve();

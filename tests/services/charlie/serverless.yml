@@ -1,11 +1,11 @@
 
-service: alpha
+service: charlie
 
 frameworkVersion: '3'
 
 provider:
   name: aws
-  region: ${param:region}
+  region: us-east-1
   stackTags:
     PROJECT: ${param:PROJECT}
     SERVICE: ${self:service}
