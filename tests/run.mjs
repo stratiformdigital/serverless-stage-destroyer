@@ -40,7 +40,7 @@ await runner.run_command_and_output(
 console.log("\n\nChecking prod safeguard...");
 for (let stage of ["prod", "production", "fooprodbar"]) {
   try {
-    await destroyer.destroy(region, stage);
+    await destroyer.destroy(region, stage, {});
   } catch (err) {
     if (!err.includes("You've requested a destroy for a protected stage")) {
       throw "ERROR:  Production safeguard did not work as intended.";
@@ -53,16 +53,19 @@ console.log("Check passed...");
 // ------------------------------------------------
 console.log("\n\nChecking ability to destroy a stage.project.service...");
 let before = await getAllStacksForStage(region, process.env.STAGE_NAME);
-await destroyer.destroy(region, process.env.STAGE_NAME, [
-  {
-    Key: "PROJECT",
-    Value: "serverless-stage-destroyer",
-  },
-  {
-    Key: "SERVICE",
-    Value: "alpha",
-  },
-]);
+await destroyer.destroy(region, process.env.STAGE_NAME, {
+  filters: [
+    {
+      Key: "PROJECT",
+      Value: "serverless-stage-destroyer",
+    },
+    {
+      Key: "SERVICE",
+      Value: "alpha",
+    },
+  ],
+  verify: false,
+});
 let after = await getAllStacksForStage(region, process.env.STAGE_NAME);
 if (
   _.isEqual(
@@ -79,12 +82,15 @@ if (
 // ------------------------------------------------
 console.log("\n\nChecking ability to destroy a stage.project...");
 before = await getAllStacksForStage(region, process.env.STAGE_NAME);
-await destroyer.destroy(region, process.env.STAGE_NAME, [
-  {
-    Key: "PROJECT",
-    Value: "serverless-stage-destroyer",
-  },
-]);
+await destroyer.destroy(region, process.env.STAGE_NAME, {
+  filters: [
+    {
+      Key: "PROJECT",
+      Value: "serverless-stage-destroyer",
+    },
+  ],
+  verify: false,
+});
 after = await getAllStacksForStage(region, process.env.STAGE_NAME);
 if (
   _.isEqual(
@@ -105,12 +111,15 @@ if (
 // ------------------------------------------------
 console.log("\n\nChecking ability to destroy a stage.service...");
 before = await getAllStacksForStage(region, process.env.STAGE_NAME);
-await destroyer.destroy(region, process.env.STAGE_NAME, [
-  {
-    Key: "SERVICE",
-    Value: "echo",
-  },
-]);
+await destroyer.destroy(region, process.env.STAGE_NAME, {
+  filters: [
+    {
+      Key: "SERVICE",
+      Value: "echo",
+    },
+  ],
+  verify: false,
+});
 after = await getAllStacksForStage(region, process.env.STAGE_NAME);
 if (
   !_.isEqual(
@@ -125,7 +134,9 @@ if (
 // ------------------------------------------------
 console.log("\n\nChecking ability to destroy a stage...");
 before = await getAllStacksForStage(region, process.env.STAGE_NAME);
-await destroyer.destroy(region, process.env.STAGE_NAME);
+await destroyer.destroy(region, process.env.STAGE_NAME, {
+  verify: false,
+});
 after = await getAllStacksForStage(region, process.env.STAGE_NAME);
 if (
   !_.isEqual(
