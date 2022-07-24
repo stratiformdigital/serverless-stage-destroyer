@@ -11,4 +11,4 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
-      - run: echo $GITHUB_REPOSITORY
+      - run: echo ${{ github.event.pull_request.head.ref }}
