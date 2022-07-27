@@ -29,30 +29,60 @@ Install to your project with your packager manager of choice, likely as a dev de
 npm install serverless-stage-destroyer --save-dev
 ```
 
-or
-
-```
-yarn add serverless-stage-destroyer --dev
-```
-
-Using the package to destroy resources associated with the "foo" stage in Amazon's us-east-1 region:
+Import the package:
 
 ```
 import { ServerlessStageDestroyer } from "serverless-stage-destroyer"
+let destroyer = new ServerlessStageDestroyer();
+```
 
-...
+Destroy resources associated with the "foo" stage in Amazon's us-east-1 region:
 
-let destroyer = new ServerlessStageDestroyer;
-destroyer.destroy("us-east-1", "foo");
+```
+destroyer.destroy("us-east-1", "foo", {});
 ```
 
 ## Background
 
 ## Assorted Notes/Considerations
 
-This package is designed to prompt the user to confirm they want to proceed with destroying a given stage, by way of asking for re-input of the stage name. If the environment variable CI is present and set to true, as is the case for most CI systems, this confirmation is bypassed.
+This package is meant to make it easy to clean up cloudformation stacks deployed by the Serverless Framework.
 
-This package is designed to refuse to destroy stages named master, main, staging, or production. There may be use cases where destroying stages with those names is desired, but this package doesn't want to help with that for now.
+Keep in mind:
+
+- Any stage that contains the substring 'prod' cannot be removed with this package. There's no override provided; if you need to destroy a stage containing 'prod', you're on your own.
+- By default, the destroy function will wait for all cloudformation stacks to be destroyed. If you'd like to trigger destroys and then exit immediately without waiting, you may pass 'wait: false' in the destroy() options.
+
+```
+destroyer.destroy("us-east-1", "foo", {
+  wait: false
+});
+```
+
+- By default, the destroy function will prompt the user to confirm destruction by way of asking the user to re-enter the stage name. If you'd like to skip the prompt (like for CI systems), you may pass 'verify: false' in the destroy() options.
+
+```
+destroyer.destroy("us-east-1", "foo", {
+  verify: false
+});
+```
+
+- Any number of cloudformation tag filters may be passed in the destroy options. This can be useful if you want to destroy just a particular service. If your project adds default tags to each stage, such as to identify the parent project in a shared AWS account, you can filter on that, too. The filters can contain any number of Key/Value pairs:
+
+```
+destroyer.destroy("us-east-1", "foo", {
+  filters: [
+    {
+      Key: "PROJECT",
+      Value: "serverless-stage-destroyer",
+    },
+    {
+      Key: "SERVICE",
+      Value: "alpha",
+    },
+  ]
+});
+```
 
 ## License
 
