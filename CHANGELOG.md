@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/stratiformdigital/serverless-stage-destroyer/compare/v2.0.0...v2.0.1) (2022-07-27)
+
+
+### Bug Fixes
+
+* **ci and readme:**  CI and documentation updates.  No package changes ([#47](https://github.com/stratiformdigital/serverless-stage-destroyer/issues/47)) ([8715ee1](https://github.com/stratiformdigital/serverless-stage-destroyer/commit/8715ee1098445e527d36095bdc8804e7bc7d4d7b))
+
 # [2.0.0](https://github.com/stratiformdigital/serverless-stage-destroyer/compare/v1.7.0...v2.0.0) (2022-07-24)
 
 
