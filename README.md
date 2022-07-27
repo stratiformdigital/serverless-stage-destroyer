@@ -42,8 +42,6 @@ Destroy resources associated with the "foo" stage in Amazon's us-east-1 region:
 destroyer.destroy("us-east-1", "foo", {});
 ```
 
-## Background
-
 ## Assorted Notes/Considerations
 
 This package is meant to make it easy to clean up cloudformation stacks deployed by the Serverless Framework.
