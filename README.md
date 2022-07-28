@@ -26,13 +26,13 @@
 Install to your project with your packager manager of choice, likely as a dev dependency:
 
 ```
-npm install serverless-stage-destroyer --save-dev
+npm install @stratiformdigital/serverless-stage-destroyer --save-dev
 ```
 
 Import the package:
 
 ```
-import { ServerlessStageDestroyer } from "serverless-stage-destroyer"
+import { ServerlessStageDestroyer } from "@stratiformdigital/serverless-stage-destroyer";
 let destroyer = new ServerlessStageDestroyer();
 ```
 
