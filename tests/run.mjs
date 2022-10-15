@@ -3,6 +3,8 @@ import LabeledProcessRunner from "./runner.mjs";
 import {
   CloudFormationClient,
   paginateDescribeStacks,
+  DescribeStacksCommand,
+  UpdateTerminationProtectionCommand,
 } from "@aws-sdk/client-cloudformation";
 import _ from "lodash";
 const runner = new LabeledProcessRunner();
@@ -51,6 +53,35 @@ for (let stage of ["prod", "production", "fooprodbar"]) {
     }
   }
 }
+console.log("Check passed...");
+// ------------------------------------------------
+
+// ------------------------------------------------
+console.log("\n\nChecking termination protection safeguard...");
+const client = new CloudFormationClient({ region: "us-east-1" });
+await client.send(
+  new UpdateTerminationProtectionCommand({
+    StackName: `delta-${process.env.STACK_NAME}`,
+    EnableTerminationProtection: true,
+  })
+);
+try {
+  await destroyer.destroy(region, process.env.STAGE_NAME, {});
+} catch (err) {
+  if (
+    !err.includes(
+      "ERROR:  At least one stack was found to have termination protection enabled"
+    )
+  ) {
+    throw "ERROR:  Termination Protection safeguard did not work as intended.";
+  }
+}
+await client.send(
+  new UpdateTerminationProtectionCommand({
+    StackName: `delta-${process.env.STACK_NAME}`,
+    EnableTerminationProtection: false,
+  })
+);
 console.log("Check passed...");
 // ------------------------------------------------
 

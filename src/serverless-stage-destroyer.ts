@@ -5,6 +5,7 @@ import {
   paginateListStackResources,
   DeleteStackCommand,
   waitUntilStackDeleteComplete,
+  Stack,
 } from "@aws-sdk/client-cloudformation";
 
 import {
@@ -50,6 +51,9 @@ export class ServerlessStageDestroyer {
       return;
     }
 
+    // Check if any of the stacks have termination protection enabled.
+    await this.checkForTerminationProtection(region, stacksToDestroy);
+
     // Third, show the stacks identified for destroy, and ask the user to confirm before proceeding.
     //   This underlying function is bypassed when CI=true
     if (verify) {
@@ -68,6 +72,25 @@ export class ServerlessStageDestroyer {
     if (wait) {
       for (let i of stacksToDestroy || []) {
         await this.ensureStackIsDeleted(region, `${i.StackName}`);
+      }
+    }
+  }
+
+  private async checkForTerminationProtection(region: string, stacks: any[]) {
+    const client = new CloudFormationClient({ region: region });
+    for (const stack of stacks) {
+      let describeStacksCommandResponse = (
+        await client.send(
+          new DescribeStacksCommand({
+            StackName: stack.StackName,
+          })
+        )
+      ).Stacks;
+      let stackDetails = describeStacksCommandResponse
+        ? describeStacksCommandResponse[0]
+        : { EnableTerminationProtection: undefined };
+      if (stackDetails.EnableTerminationProtection) {
+        throw "ERROR:  At least one stack was found to have termination protection enabled.  Refusing to continue.";
       }
     }
   }
