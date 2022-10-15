@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/stratiformdigital/serverless-stage-destroyer/compare/v2.0.1...v2.1.0) (2022-10-15)
+
+
+### Features
+
+* **termination protection check:**  Implement a Termination Protection safeguard ([#125](https://github.com/stratiformdigital/serverless-stage-destroyer/issues/125)) ([b9dfafd](https://github.com/stratiformdigital/serverless-stage-destroyer/commit/b9dfafdcdb26029df544a13c9778a3d9cebfee24))
+
 ## [2.0.1](https://github.com/stratiformdigital/serverless-stage-destroyer/compare/v2.0.0...v2.0.1) (2022-07-27)
 
 
