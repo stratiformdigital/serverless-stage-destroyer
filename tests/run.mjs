@@ -61,7 +61,7 @@ console.log("\n\nChecking termination protection safeguard...");
 const client = new CloudFormationClient({ region: "us-east-1" });
 await client.send(
   new UpdateTerminationProtectionCommand({
-    StackName: `delta-${process.env.STACK_NAME}`,
+    StackName: `delta-${process.env.STAGE_NAME}`,
     EnableTerminationProtection: true,
   })
 );
@@ -78,7 +78,7 @@ try {
 }
 await client.send(
   new UpdateTerminationProtectionCommand({
-    StackName: `delta-${process.env.STACK_NAME}`,
+    StackName: `delta-${process.env.STAGE_NAME}`,
     EnableTerminationProtection: false,
   })
 );
