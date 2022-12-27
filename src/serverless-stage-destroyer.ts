@@ -16,6 +16,13 @@ import {
   HeadBucketCommand,
   PutBucketPolicyCommand,
 } from "@aws-sdk/client-s3";
+
+import {
+  EC2Client,
+  DeleteNetworkInterfaceCommand,
+  paginateDescribeNetworkInterfaces,
+} from "@aws-sdk/client-ec2";
+
 import * as readlineSync from "readline-sync";
 
 type Tag = {
@@ -192,6 +199,71 @@ export class ServerlessStageDestroyer {
     return buckets;
   }
 
+  private async getSecurityGroupsForStack(region: string, stack: string) {
+    const client = new CloudFormationClient({ region: region });
+    const securityGroups = [];
+
+    for await (const page of paginateListStackResources(
+      { client },
+      { StackName: stack }
+    )) {
+      if (page.StackResourceSummaries && page.StackResourceSummaries.length) {
+        securityGroups.push(
+          ...page.StackResourceSummaries.filter(
+            (item) => item.ResourceType === "AWS::EC2::SecurityGroup"
+          ).map((item) => item.PhysicalResourceId)
+        );
+      }
+    }
+    return securityGroups;
+  }
+
+  private async getEnisToDelete(region: string, stack: string) {
+    const client = new EC2Client({ region: region });
+    const enis = [];
+    const securityGroupIds = await this.getSecurityGroupsForStack(
+      region,
+      stack
+    );
+
+    if (securityGroupIds.length) {
+      for await (const page of paginateDescribeNetworkInterfaces(
+        { client },
+        {
+          Filters: [
+            {
+              Name: "group-id",
+              Values: securityGroupIds as string[],
+            },
+          ],
+        }
+      )) {
+        if (page.NetworkInterfaces && page.NetworkInterfaces.length) {
+          enis.push(
+            ...page.NetworkInterfaces.map((item) => item.NetworkInterfaceId)
+          );
+        }
+      }
+    }
+    return enis;
+  }
+
+  private async deleteEnis(
+    region: string,
+    enisToDelete: (string | undefined)[]
+  ) {
+    const client = new EC2Client({ region: region });
+
+    enisToDelete.map(async (eniId) => {
+      console.log(`Deleting ENI ${eniId}`);
+      if (eniId !== undefined) {
+        const response = await client.send(
+          new DeleteNetworkInterfaceCommand({ NetworkInterfaceId: eniId })
+        );
+      }
+    });
+  }
+
   private async deleteVersions(bucket: string, client: S3Client) {
     // Get all versions
     let objectVersions = await client.send(
@@ -245,6 +317,11 @@ export class ServerlessStageDestroyer {
 
   public async destroyStack(region: string, stack: string) {
     console.log(`Destroying stack:  ${stack}...`);
+    // Delete ENIs belonging to the stack (found by security group attachment)
+    const enisToDelete = await this.getEnisToDelete(region, stack);
+    if (enisToDelete.length) {
+      await this.deleteEnis(region, enisToDelete);
+    }
 
     // Find buckets belonging to the stack
     let bucketsToEmpty = await this.getBucketsForStack(region, stack);
