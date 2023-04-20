@@ -70,9 +70,11 @@ export class ServerlessStageDestroyer {
 
     // Fifth, wait for stacks to be deleted.
     if (wait) {
+      let waiters = [];
       for (let i of stacksToDestroy || []) {
-        await this.ensureStackIsDeleted(region, `${i.StackName}`);
+        waiters.push(this.ensureStackIsDeleted(region, `${i.StackName}`));
       }
+      await Promise.all(waiters);
     }
   }
 
@@ -101,7 +103,7 @@ export class ServerlessStageDestroyer {
     await waitUntilStackDeleteComplete(
       {
         client: client,
-        maxWaitTime: 1500,
+        maxWaitTime: 7200,
       },
       {
         StackName: stack,
