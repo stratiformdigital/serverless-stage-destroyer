@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/stratiformdigital/serverless-stage-destroyer/compare/v2.1.0...v2.1.1) (2023-04-20)
+
+
+### Bug Fixes
+
+* **waiter:**  Increase timeout to 2hr and wait in parallel ([#231](https://github.com/stratiformdigital/serverless-stage-destroyer/issues/231)) ([ca228db](https://github.com/stratiformdigital/serverless-stage-destroyer/commit/ca228dbf7fb9f7ef014f9a54f34719550a22ee59))
+
 # [2.1.0](https://github.com/stratiformdigital/serverless-stage-destroyer/compare/v2.0.1...v2.1.0) (2022-10-15)
 
 
