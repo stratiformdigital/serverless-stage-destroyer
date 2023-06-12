@@ -29,7 +29,7 @@
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
     "@serverless/compose": "^1.2.4",
-    "@types/node": "^18.0.4",
+    "@types/node": "^20.3.0",
     "lodash": "^4.17.21",
     "semantic-release": "^21.0.1",
     "serverless": "^3.21.0",
